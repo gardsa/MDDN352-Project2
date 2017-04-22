@@ -1,0 +1,114 @@
+body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  font-family: 'Roboto', sans-serif;
+  /*line-height: 1;
+  overflow-x: hidden;
+  margin: 0;*/
+  background-color: #EDEDED;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  background-color: #FFFFFF;
+}
+
+header, .header-container {
+  width: 100%;
+}
+
+.header-container, .header-logo {
+  position: relative;
+  height: inherit;
+}
+
+.header-container {
+  /*padding: 0 1.25em;*/
+}
+
+.header-nav {
+  position: absolute;
+  top: 0;
+  right: 1.25em;
+  bottom: 0;
+  left: 1.25em;
+  height: inherit;
+}
+
+.list-nav {
+  padding: 1em 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+.list-nav li:first-child {
+  margin-top: 0;
+}
+
+.list-nav-elem {
+  margin: 0 -.625em;
+  padding: 0;
+  font-weight: 600;
+  color: #7F507B;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .1875em;
+}
+
+.list-nav-elem a {
+  padding: 0 .625em;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color .3s;
+}
+
+.list-nav-elem a:hover{
+  color: #3ACCB0;
+}
+
+.list-nav-elem-left {
+  float: left;
+}
+
+.list-nav-elem-right {
+  float: right;
+}
+
+.header-logo {
+  width: 3em;
+  margin: 0 auto;
+  z-index: 1;
+  -webkit-transition: width .3s;
+  -moz-transition: width .3s;
+  -ms-transition: width .3s;
+  -o-transition: width .3s;
+  transition: width .3s;
+}
+
+#headerIcon {
+  width: inherit;
+  height: 100%;
+  -webkit-transition: width .3s;
+  -moz-transition: width .3s;
+  -ms-transition: width .3s;
+  -o-transition: width .3s;
+  transition: width .3s;
+}
+
+#menuIcon {
+  padding: 2px 10px;
+}
+
+#settingsIcon {
+  padding: 0 10px;
+}
