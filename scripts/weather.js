@@ -1,4 +1,4 @@
-var owmBaseURL = 'https://api.openweathermap.org/data/2.5/',
+var owmBaseURL = 'http://api.openweathermap.org/data/2.5/',
     owmAPIKey = '31ed34cbcb1d480a9de746e8a88e71ea',
     currentData,
     forecastData;
