@@ -1,4 +1,4 @@
-var owmBaseURL = 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/',
+var owmBaseURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/',
     owmAPIKey = '31ed34cbcb1d480a9de746e8a88e71ea',
     currentData,
     forecastData;
@@ -15,6 +15,22 @@ function locationFound(position){
   getCurrentWeatherData(position.coords.latitude, position.coords.longitude);
   getForecastWeatherData(position.coords.latitude, position.coords.longitude);
 }
+
+// function getUserLocation() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', 'http://ip-api.com/json');
+//   xhr.addEventListener('load', function(event) {
+//     geoIPJSON = JSON.parse(event.target.response);
+//     console.log(geoIPJSON);
+//     locationFound(geoIPJSON);
+//   });
+//   xhr.send();
+// }
+//
+// function locationFound(geoIPJSON){
+//   getCurrentWeatherData(geoIPJSON.lat, geoIPJSON.lon);
+//   getForecastWeatherData(geoIPJSON.lat, geoIPJSON.lon);
+// }
 
 function getCurrentWeatherData(lat, lng) {
   var xhr = new XMLHttpRequest();
