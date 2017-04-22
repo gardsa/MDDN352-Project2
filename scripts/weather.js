@@ -16,6 +16,8 @@ function locationFound(position){
   getForecastWeatherData(position.coords.latitude, position.coords.longitude);
 }
 
+// Back-up if CORS header hack stops working
+//
 // function getUserLocation() {
 //   var xhr = new XMLHttpRequest();
 //   xhr.open('GET', 'http://ip-api.com/json');
@@ -60,6 +62,7 @@ function renderCurrentWeatherInfo() {
   location.innerHTML = currentData.name;
   description.innerHTML = currentData.weather[0].main;
   renderCurrentTemp();
+  renderWind();
 }
 
 function renderForecastWeatherInfo() {
@@ -77,21 +80,37 @@ function renderForecastTemp() {
   var gridElem = document.getElementById('gridMain'),
       highTemp = Math.round(forecastData.list[0].temp.max),
       lowTemp = Math.round(forecastData.list[0].temp.min);
-  console.log(highTemp);
-  console.log(lowTemp);
+
   gridElem.innerHTML += '<div class="forecast-temp"><div class="high">' + highTemp + '</div><div class="low">' + lowTemp + '</div></div>';
 }
 
 function renderWind() {
+  var gridElem = document.getElementById('grid1'),
+      speed = Math.round(currentData.wind.speed * 3.6),
+      degrees = currentData.wind.deg;
 
+  gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction" src="assets/wind-direction-icon.svg"></img>';
+
+  var directionElem = document.getElementById('direction');
+  if(navigator.userAgent.match("Chrome")){
+		directionElem.style.WebkitTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Firefox")){
+		directionElem.style.MozTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("MSIE")){
+		directionElem.style.msTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Opera")){
+		directionElem.style.OTransform = "rotate("+degrees+"deg)";
+	} else {
+		directionElem.style.transform = "rotate("+degrees+"deg)";
+	}
 }
 
 function renderCloud() {
-
+  var gridElem = document.getElementById('grid2');
 }
 
 function renderRain() {
-
+  var gridElem = document.getElementById('grid3');
 }
 
 document.addEventListener('DOMContentLoaded', function(){
