@@ -210,7 +210,7 @@ main {
   font-size: 6.25em;
 }
 
-.current-temp sup {
+sup {
   font-size: 60%;
   vertical-align: super;
 }
@@ -226,7 +226,7 @@ main {
 .current-wind {
   position: absolute;
   margin: 0;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

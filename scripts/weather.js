@@ -81,7 +81,7 @@ function renderForecastTemp() {
       highTemp = Math.round(forecastData.list[0].temp.max),
       lowTemp = Math.round(forecastData.list[0].temp.min);
 
-  gridElem.innerHTML += '<div class="forecast-temp"><div class="high">' + highTemp + '</div><div class="low">' + lowTemp + '</div></div>';
+  gridElem.innerHTML += '<div class="forecast-temp"><div class="high">' + highTemp + '<sup>&deg;</sup></div><div class="low">' + lowTemp + '<sup>&deg;</sup></div></div>';
 }
 
 function renderWind() {
