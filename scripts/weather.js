@@ -14,6 +14,8 @@ function getUserLocation() {
 function locationFound(position){
   getCurrentWeatherData(position.coords.latitude, position.coords.longitude);
   getForecastWeatherData(position.coords.latitude, position.coords.longitude);
+  // getCurrentWeatherData(49.2827, -123.1207);
+  // getForecastWeatherData(49.2827, -123.1207);
 }
 
 // Back-up if CORS header hack stops working
@@ -63,6 +65,7 @@ function renderCurrentWeatherInfo() {
   description.innerHTML = currentData.weather[0].main;
   renderCurrentTemp();
   renderWind();
+  renderCloud();
 }
 
 function renderForecastWeatherInfo() {
@@ -71,7 +74,7 @@ function renderForecastWeatherInfo() {
 
 function renderCurrentTemp() {
   var gridElem = document.getElementById('gridMain'),
-      currentTemp = currentData.main.temp;
+      currentTemp = Math.round(currentData.main.temp);
 
   gridElem.innerHTML += '<div class="current-temp">' + currentTemp + '<sup>&deg;</sup></div>';
 }
@@ -106,7 +109,27 @@ function renderWind() {
 }
 
 function renderCloud() {
-  var gridElem = document.getElementById('grid2');
+  var gridElem = document.getElementById('grid2'),
+      cloudCover = currentData.clouds.all;
+
+  gridElem.innerHTML += '<img id="cloud-circle" src="assets/circle-icon.svg"></img>'
+
+  if (cloudCover == 0){
+    gridElem.innerHTML += '<div class="current-cloud">clear</div>'
+  }
+  else {
+    gridElem.innerHTML += '<div class="canvas-container"><canvas id="cloud-canvas" width="100" height="100"></canvas></div>';
+
+    var c = document.getElementById("cloud-canvas"),
+    ctx = c.getContext("2d");
+
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.moveTo(c.width/2, c.height/2);
+    ctx.arc(c.width/2, c.height/2, c.height/2, 0, (Math.PI*2*(cloudCover/100)), false);
+    ctx.lineTo(c.width/2, c.height/2);
+    ctx.fill();
+  }
 }
 
 function renderRain() {

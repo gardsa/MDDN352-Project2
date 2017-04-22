@@ -223,7 +223,7 @@ sup {
   opacity: 0.8;
 }
 
-.current-wind {
+.current-wind, .current-cloud, #cloud-canvas {
   position: absolute;
   margin: 0;
   top: 50%;
@@ -232,21 +232,25 @@ sup {
 }
 
 .speed {
-  font-size: 1.5em;
-  line-height: 1.25em;
+  font-size: 2em;
 }
 
 .units {
   font-size: 0.4375em;
 }
 
-#direction {
+#direction, #cloud-circle, .canvas-container {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   margin: auto;
+}
+
+#cloud-canvas {
+  width: 78%;
+  height: 78%;
 }
