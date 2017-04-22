@@ -149,10 +149,9 @@ main {
 }
 
 .grid {
-   width: calc(90%);
-   padding: 5%;
-   background-color: #EDEDED;
-   border-radius: 5px;
+  width: calc(90%);
+  padding: 5%;
+  border-radius: 5px;
 }
 .grid:after {
   content: '';
