@@ -221,7 +221,7 @@ sup {
   opacity: 0.8;
 }
 
-.current-wind, .current-cloud, #cloud-canvas {
+.current-wind, .current-cloud, #cloud-canvas, .current-precip {
   position: absolute;
   margin: 0;
   top: 50%;
@@ -229,15 +229,19 @@ sup {
   transform: translate(-50%, -50%);
 }
 
-.speed {
-  font-size: 2em;
+.current-precip .intensity {
+  letter-spacing: normal;
+}
+
+.speed, .intensity {
+  font-size: 1.75em;
 }
 
 .units {
   font-size: 0.4375em;
 }
 
-#direction, #cloud-circle, .canvas-container {
+#direction-icon, #cloud-circle, .canvas-container, #precip-icon {
   position: absolute;
   top: 0;
   right: 0;

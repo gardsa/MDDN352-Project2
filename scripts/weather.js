@@ -16,7 +16,7 @@ function getUserLocation() {
 
 function locationFound(position){
   getWeatherData(position.coords.latitude, position.coords.longitude);
-  // getWeatherData(-21.2367, -159.7777);
+  // getWeatherData(37.7749, -122.4194);
 }
 
 function getWeatherData(lat, lng) {
@@ -44,6 +44,7 @@ function renderWeatherInfo(){
   renderTemp();
   renderWind();
   renderCloud();
+  renderPrecip();
 }
 
 function renderLocation() {
@@ -67,9 +68,9 @@ function renderWind() {
       speed = Math.round(weatherData.currently.windSpeed * 3.6),
       degrees = weatherData.currently.windBearing;
 
-  gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction" src="assets/wind-direction-icon.svg"></img>';
+  gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction-icon" src="assets/wind-direction-icon.svg"></img>';
 
-  var directionElem = document.getElementById('direction');
+  var directionElem = document.getElementById('direction-icon');
   if(navigator.userAgent.match("Chrome")){
 		directionElem.style.WebkitTransform = "rotate("+degrees+"deg)";
 	} else if(navigator.userAgent.match("Firefox")){
@@ -107,8 +108,27 @@ function renderCloud() {
   }
 }
 
-function renderRain() {
-  var gridElem = document.getElementById('grid3');
+function renderPrecip() {
+  var gridElem = document.getElementById('grid3'),
+      precipIntensity = Math.round(weatherData.hourly.data[0].precipIntensity*10) / 10;
+
+  if (precipIntensity > 0) {
+    gridElem.innerHTML = '<div class="current-precip"><div class="intensity">' + precipIntensity + '</div><div class="units">mm</div></div>';
+
+    var precipType = weatherData.hourly.data[0].precipType;
+    if (precipType == 'rain'){
+      gridElem.innerHTML += '<img id="precip-icon" src="assets/rain-icon.svg"></img>';
+    }
+    else if (precipType == 'snow') {
+      // gridElem.innerHTML += '<img id="precip-icon" src="assets/snow-icon.svg"></img>';
+    }
+    else if (precipType == 'sleet') {
+      // gridElem.innerHTML += '<img id="precip-icon" src="assets/sleet-icon.svg"></img>';
+    }
+  } else {
+    gridElem.innerHTML = '<div class="current-precip"><div class="intensity">0</div><div class="units">mm</div></div><img id="precip-icon" src="assets/rain-icon.svg"></img>';
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', function(){
