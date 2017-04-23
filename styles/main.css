@@ -6,9 +6,8 @@ body {
   left: 0;
 
   font-family: 'Roboto', sans-serif;
-  /*line-height: 1;
+  letter-spacing: .09375em;
   overflow-x: hidden;
-  margin: 0;*/
   background-color: #EDEDED;
 }
 
@@ -126,7 +125,6 @@ main {
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: .09375em;
 }
 
 #location {
@@ -218,6 +216,7 @@ sup {
   display: inline-block;
   padding: 40px 30px 40px 0;
   float: right;
+  text-align: right;
   font-size: 2.5em;
   opacity: 0.8;
 }

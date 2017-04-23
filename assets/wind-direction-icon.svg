@@ -10,10 +10,10 @@
 <g id="Layer_2">
 	<g id="Layer_1-2">
 		
-			<ellipse id="Ellipse_46" transform="matrix(0.7092 -0.705 0.705 0.7092 -13.074 27.914)" class="st0" cx="27.3" cy="29.8" rx="25" ry="25"/>
+			<ellipse id="Ellipse_46" transform="matrix(0.7092 -0.705 0.705 0.7092 -13.1409 27.9414)" class="st0" cx="27.3" cy="29.9" rx="25" ry="25"/>
 		<g id="Group_172">
-			<path id="Path_238" class="st1" d="M27.3,49.7l-4.5,9.9l4.5-2.8"/>
-			<path id="Path_239" class="st1" d="M27.3,56.8l4.5,2.8l-4.5-10"/>
+			<path id="Path_238" class="st1" d="M27.3,10.7l4.5-9.9l-4.5,2.8"/>
+			<path id="Path_239" class="st1" d="M27.3,3.6l-4.5-2.8l4.5,10"/>
 		</g>
 	</g>
 </g>

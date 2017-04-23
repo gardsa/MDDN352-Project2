@@ -1,7 +1,10 @@
-var owmBaseURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/',
+var corsHeadersURL = 'https://cors-anywhere.herokuapp.com/',
+    owmBaseURL = 'http://api.openweathermap.org/data/2.5/',
     owmAPIKey = '31ed34cbcb1d480a9de746e8a88e71ea',
-    currentData,
-    forecastData;
+    darkSkyBaseURL = 'https://api.darksky.net/forecast/',
+    darkSkyAPIKey = 'ac6929b61ada094c25ee0e4e1380e6ae',
+    weatherData,
+    owmWeatherData;
 
 function getUserLocation() {
   if (navigator.geolocation) {
@@ -12,85 +15,57 @@ function getUserLocation() {
 }
 
 function locationFound(position){
-  getCurrentWeatherData(position.coords.latitude, position.coords.longitude);
-  getForecastWeatherData(position.coords.latitude, position.coords.longitude);
-  // getCurrentWeatherData(49.2827, -123.1207);
-  // getForecastWeatherData(49.2827, -123.1207);
+  getWeatherData(position.coords.latitude, position.coords.longitude);
+  // getWeatherData(-21.2367, -159.7777);
 }
 
-// Back-up if CORS header hack stops working
-//
-// function getUserLocation() {
-//   var xhr = new XMLHttpRequest();
-//   xhr.open('GET', 'http://ip-api.com/json');
-//   xhr.addEventListener('load', function(event) {
-//     geoIPJSON = JSON.parse(event.target.response);
-//     console.log(geoIPJSON);
-//     locationFound(geoIPJSON);
-//   });
-//   xhr.send();
-// }
-//
-// function locationFound(geoIPJSON){
-//   getCurrentWeatherData(geoIPJSON.lat, geoIPJSON.lon);
-//   getForecastWeatherData(geoIPJSON.lat, geoIPJSON.lon);
-// }
-
-function getCurrentWeatherData(lat, lng) {
+function getWeatherData(lat, lng) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', owmBaseURL + "weather?lat=" + lat + "&lon=" + lng + "&units=metric&APPID=" + owmAPIKey);
+  xhr.open('GET', corsHeadersURL + darkSkyBaseURL + darkSkyAPIKey + '/' + lat + ',' + lng + '?units=si&exclude=minutely,alerts,flags');
   xhr.addEventListener('load', function(event) {
-    currentData = JSON.parse(event.target.response);
-    console.log(currentData);
-    renderCurrentWeatherInfo();
+    weatherData = JSON.parse(event.target.response);
+    console.log(weatherData);
+    renderWeatherInfo();
   });
   xhr.send();
-}
 
-function getForecastWeatherData(lat, lng) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', owmBaseURL + "forecast/daily?lat=" + lat + "&lon=" + lng + "&units=metric&APPID=" + owmAPIKey);
-  xhr.addEventListener('load', function(event) {
-    forecastData = JSON.parse(event.target.response);
-    console.log(forecastData);
-    renderForecastWeatherInfo();
+  var xhr2 = new XMLHttpRequest();
+  xhr2.open('GET', corsHeadersURL + owmBaseURL + "weather?lat=" + lat + "&lon=" + lng + "&units=metric&APPID=" + owmAPIKey);
+  xhr2.addEventListener('load', function(event) {
+    owmWeatherData = JSON.parse(event.target.response);
+    renderLocation();
   });
-  xhr.send();
+  xhr2.send();
 }
 
-function renderCurrentWeatherInfo() {
-  var location = document.getElementById('location'),
-      descriptionElem = document.getElementById('description');
-  location.innerHTML = currentData.name;
-  description.innerHTML = currentData.weather[0].main;
-  renderCurrentTemp();
+function renderWeatherInfo(){
+  var descriptionElem = document.getElementById('description');
+  descriptionElem.innerHTML = weatherData.currently.summary;
+  renderTemp();
   renderWind();
   renderCloud();
 }
 
-function renderForecastWeatherInfo() {
-  renderForecastTemp();
+function renderLocation() {
+  var location =  document.getElementById('location');
+  location.innerHTML += owmWeatherData.name;
 }
 
-function renderCurrentTemp() {
+function renderTemp() {
   var gridElem = document.getElementById('gridMain'),
-      currentTemp = Math.round(currentData.main.temp);
+      currentTemp = Math.round(weatherData.currently.temperature),
+      maxTemp = Math.round(weatherData.daily.data[0].temperatureMax),
+      minTemp = Math.round(weatherData.daily.data[0].temperatureMin);
 
   gridElem.innerHTML += '<div class="current-temp">' + currentTemp + '<sup>&deg;</sup></div>';
-}
 
-function renderForecastTemp() {
-  var gridElem = document.getElementById('gridMain'),
-      highTemp = Math.round(forecastData.list[0].temp.max),
-      lowTemp = Math.round(forecastData.list[0].temp.min);
-
-  gridElem.innerHTML += '<div class="forecast-temp"><div class="high">' + highTemp + '<sup>&deg;</sup></div><div class="low">' + lowTemp + '<sup>&deg;</sup></div></div>';
+  gridElem.innerHTML += '<div class="forecast-temp"><div class="high">' + maxTemp + '<sup>&deg;</sup></div><div class="low">' + minTemp + '<sup>&deg;</sup></div></div>';
 }
 
 function renderWind() {
   var gridElem = document.getElementById('grid1'),
-      speed = Math.round(currentData.wind.speed * 3.6),
-      degrees = currentData.wind.deg;
+      speed = Math.round(weatherData.currently.windSpeed * 3.6),
+      degrees = weatherData.currently.windBearing;
 
   gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction" src="assets/wind-direction-icon.svg"></img>';
 
@@ -110,7 +85,7 @@ function renderWind() {
 
 function renderCloud() {
   var gridElem = document.getElementById('grid2'),
-      cloudCover = currentData.clouds.all;
+      cloudCover = weatherData.currently.cloudCover;
 
   gridElem.innerHTML += '<img id="cloud-circle" src="assets/circle-icon.svg"></img>'
 
@@ -126,7 +101,7 @@ function renderCloud() {
     ctx.fillStyle = 'white';
     ctx.beginPath();
     ctx.moveTo(c.width/2, c.height/2);
-    ctx.arc(c.width/2, c.height/2, c.height/2, 0, (Math.PI*2*(cloudCover/100)), false);
+    ctx.arc(c.width/2, c.height/2, c.height/2, 0, (Math.PI*2*(cloudCover)), false);
     ctx.lineTo(c.width/2, c.height/2);
     ctx.fill();
   }
