@@ -16,7 +16,7 @@ function getUserLocation() {
 
 function locationFound(position){
   getWeatherData(position.coords.latitude, position.coords.longitude);
-  // getWeatherData(37.7749, -122.4194);
+  // getWeatherData(33.9391, 67.7100);
 }
 
 function getWeatherData(lat, lng) {
