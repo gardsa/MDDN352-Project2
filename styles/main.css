@@ -204,6 +204,7 @@ header, .header-container {
 
 #settings-icon {
   padding: 23px 10px;
+  cursor: pointer;
 }
 
 /* DROPDOWN SETTINGS */
