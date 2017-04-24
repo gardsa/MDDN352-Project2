@@ -68,7 +68,7 @@ function renderWind() {
       speed = Math.round(weatherData.currently.windSpeed * 3.6),
       degrees = weatherData.currently.windBearing;
 
-  gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction-icon" src="assets/wind-direction-icon.svg"></img>';
+  gridElem.innerHTML = '<div class="current-wind"><div class="speed">' + speed + '</div><div class="units">km/h</div></div><img id="direction-icon" src="assets/wind-direction-icon.svg">';
 
   var directionElem = document.getElementById('direction-icon');
   if(navigator.userAgent.match("Chrome")){
@@ -88,7 +88,7 @@ function renderCloud() {
   var gridElem = document.getElementById('grid2'),
       cloudCover = weatherData.currently.cloudCover;
 
-  gridElem.innerHTML += '<img id="cloud-circle" src="assets/circle-icon.svg"></img>'
+  gridElem.innerHTML += '<img id="cloud-circle" src="assets/circle-icon.svg">'
 
   if (cloudCover == 0){
     gridElem.innerHTML += '<div class="current-cloud">clear</div>'
@@ -117,16 +117,16 @@ function renderPrecip() {
 
     var precipType = weatherData.hourly.data[0].precipType;
     if (precipType == 'rain'){
-      gridElem.innerHTML += '<img id="precip-icon" src="assets/rain-icon.svg"></img>';
+      gridElem.innerHTML += '<img id="precip-icon" src="assets/rain-icon.svg">';
     }
     else if (precipType == 'snow') {
-      // gridElem.innerHTML += '<img id="precip-icon" src="assets/snow-icon.svg"></img>';
+      // gridElem.innerHTML += '<img id="precip-icon" src="assets/snow-icon.svg">';
     }
     else if (precipType == 'sleet') {
-      // gridElem.innerHTML += '<img id="precip-icon" src="assets/sleet-icon.svg"></img>';
+      // gridElem.innerHTML += '<img id="precip-icon" src="assets/sleet-icon.svg">';
     }
   } else {
-    gridElem.innerHTML = '<div class="current-precip"><div class="intensity">0</div><div class="units">mm</div></div><img id="precip-icon" src="assets/rain-icon.svg"></img>';
+    gridElem.innerHTML = '<div class="current-precip"><div class="intensity">0</div><div class="units">mm</div></div><img id="precip-icon" src="assets/rain-icon.svg">';
   }
 
 }

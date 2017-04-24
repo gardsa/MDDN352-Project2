@@ -13,36 +13,60 @@
     <script src="scripts/modular.js"></script>
     <script src="scripts/packery.pkgd.min.js"></script>
     <script src="scripts/draggabilly.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
   </head>
   <body>
-    <header>
-      <section class="header-container">
-        <nav class="header-nav">
-          <ul class="list-nav">
-            <li class="list-nav-elem list-nav-elem-left"><img id="menuIcon" src="assets/menu-icon.svg"></li>
-            <li class="list-nav-elem list-nav-elem-right"><img id="settingsIcon" src="assets/settings-icon.svg"></li>
-          </ul>
-        </nav>
-        <div class="header-logo">
-          <a href="#"><img id="headerIcon" src="assets/header-icon.svg"></a>
-        </div>
-      </section>
-    </header>
-    <main>
-      <div class="location-info">
-        <h2 id="location"></h2>
-        <p id="description"></p>
+    <nav id="menu">
+      <div class="header-logo">
+        <img src="assets/header-icon.svg">
       </div>
-      <div class="module-container">
-        <div class="grid">
-          <div class="grid-sizer"></div>
-          <div class="gutter-sizer"></div>
-          <div id="gridMain" class="grid-item grid-item-width3"></div>
-          <div id="grid1" class="grid-item"></div>
-          <div id="grid2" class="grid-item"></div>
-          <div id="grid3" class="grid-item"></div>
+      <ul class="menu-options">
+        <li class="menu-elem user-location">
+          <img src="assets/user-location-icon.svg">
+          <p>Your Location</p>
+        </li>
+        <li class="menu-elem add-location">
+          <img src="assets/add-location-icon.svg">
+          <p>Add Location</p>
+        </li>
+        <li class="menu-elem settings">
+          <img src="assets/settings-menu-icon.svg">
+          <p>Settings</p>
+        </li>
+      </ul>
+    </nav>
+    <main id="panel">
+      <header>
+        <section class="header-container">
+          <nav class="header-nav">
+            <ul class="list-nav">
+              <li class="list-nav-elem list-nav-elem-left"><img id="menu-icon" src="assets/menu-icon.svg"></li>
+              <li class="list-nav-elem list-nav-elem-right"><img id="settings-icon" src="assets/settings-icon.svg"></li>
+            </ul>
+          </nav>
+          <div class="header-logo">
+            <a href="#"><img id="headerIcon" src="assets/header-icon.svg"></a>
+          </div>
+        </section>
+      </header>
+      <div class="content">
+        <div class="location-info">
+          <h2 id="location"></h2>
+          <p id="description"></p>
+        </div>
+        <div class="module-container">
+          <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>
+            <div id="gridMain" class="grid-item grid-item-width3"></div>
+            <div id="grid1" class="grid-item"></div>
+            <div id="grid2" class="grid-item"></div>
+            <div id="grid3" class="grid-item"></div>
+          </div>
         </div>
       </div>
+      <div id="mask"></div>
     </main>
+    <script src="scripts/menu.js"></script>
   </body>
 </html>
