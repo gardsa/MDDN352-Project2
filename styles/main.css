@@ -54,7 +54,7 @@ body {
 
 .slideout-menu {
   position: fixed;
-  left: 0;
+  left: -252px;
   top: 0;
   bottom: 0;
   right: 0;
@@ -62,13 +62,20 @@ body {
   width: 252px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  display: none;
+  transition: left .3s;
+  -webkit-transition: left .3s;
 }
 
 .slideout-panel {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
   z-index: 1;
-  will-change: transform;
+  transition: left .3s, right .3s;
+  -webkit-transition: left .3s, right .3s;
 }
 
 .slideout-open,
@@ -77,12 +84,17 @@ body {
   overflow: hidden;
 }
 
-.slideout-open .slideout-menu {
+.slideout-open .slideout-menu, .slideout-panel {
   display: block;
 }
 
+.slideout-open .slideout-menu {
+  left: 0;
+}
+
 .slideout-open .slideout-panel {
-  display: block;
+  left: 252px;
+  right: -252px;
 }
 
 /* HEADER */
@@ -119,7 +131,6 @@ header, .header-container {
 }
 
 .list-nav {
-  padding: 1em 0;
   list-style-type: none;
   margin: 0;
 }
@@ -176,15 +187,15 @@ header, .header-container {
 }
 
 #menu-icon {
-  padding: 2px 10px;
+  padding: 16.75px 10px;
   cursor: pointer;
 }
 
 #settings-icon {
-  padding: 0 10px;
+  padding: 23px 10px;
 }
 
-/* MAIN */
+/* MAIN CONTENT */
 
 .content {
   position: absolute;
@@ -202,7 +213,7 @@ header, .header-container {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(43,49,64,0.5);
+  background-color: rgba(30,30,30,0.6);
   z-index: 1000;
 }
 
