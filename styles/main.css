@@ -18,7 +18,7 @@ a {
 
 /* MENU */
 
-#menu .header-logo{
+.slideout-menu .header-logo{
   margin: 0 1em;
 }
 
@@ -62,8 +62,15 @@ a {
   position: absolute;
   bottom: 0;
   padding: 1em;
-  font-size: 60%;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.attribution p {
+  padding-left: 0;
+}
+
+.attribution .attr {
+  font-size: 0.625em;
 }
 
 .slideout-menu {
@@ -119,6 +126,7 @@ header {
   right: 0;
   left: 0;
   height: 50px;
+  z-index: 1001;
   background-color: #FFFFFF;
 }
 
@@ -182,22 +190,11 @@ header, .header-container {
 .header-logo {
   width: 3em;
   margin: 0 auto;
-  z-index: 1;
-  -webkit-transition: width .3s;
-  -moz-transition: width .3s;
-  -ms-transition: width .3s;
-  -o-transition: width .3s;
-  transition: width .3s;
 }
 
 #headerIcon {
   width: inherit;
   height: 100%;
-  -webkit-transition: width .3s;
-  -moz-transition: width .3s;
-  -ms-transition: width .3s;
-  -o-transition: width .3s;
-  transition: width .3s;
 }
 
 #menu-icon {
@@ -207,6 +204,40 @@ header, .header-container {
 
 #settings-icon {
   padding: 23px 10px;
+}
+
+/* DROPDOWN SETTINGS */
+
+.dropdown-settings {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+  width: 240px;
+  z-index: 1000;
+  overflow: auto;
+  background-color: #EDEDED;
+  transform: translateY(-100%);
+  transition: transform .3s;
+}
+
+.dropdown-open .dropdown-settings {
+  transform: translateY(0);
+}
+
+.dropdown-settings .menu-options {
+  top: 0;
+}
+
+.edit-homescreen {
+  padding: .875em 1em;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.select-heading {
+  padding: 1.75em 1em;
+  text-transform: none;
+  font-weight: 100;
 }
 
 /* MAIN CONTENT */
@@ -220,7 +251,7 @@ header, .header-container {
   background-color: inherit;
 }
 
-#mask {
+#menu-mask, #settings-mask {
   display: none;
   position: absolute;
   top: 50px;
@@ -228,10 +259,14 @@ header, .header-container {
   bottom: 0;
   left: 0;
   background-color: rgba(30,30,30,0.6);
-  z-index: 1000;
+  z-index: 999;
 }
 
-.slideout-open #mask {
+.slideout-open #menu-mask {
+  display: block;
+}
+
+.dropdown-open #settings-mask {
   display: block;
 }
 

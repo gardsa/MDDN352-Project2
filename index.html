@@ -22,7 +22,7 @@
     <script src="scripts/draggabilly.pkgd.min.js"></script>
   </head>
   <body>
-    <nav id="menu" class="slideout-menu">
+    <nav class="slideout-menu">
       <div class="header-logo">
         <img src="assets/header-icon.svg">
       </div>
@@ -41,7 +41,7 @@
         </li>
         <li class="menu-elem attribution">
           <p>Powered by:</p>
-          <p><a href="https://darksky.net/poweredby/">Dark Sky</a> and <a href="https://openweathermap.org/">OpenWeatherMap</a></p>
+          <p class="attr"><a href="https://darksky.net/poweredby/">Dark Sky</a> and <a href="https://openweathermap.org/">OpenWeatherMap</a></p>
         </li>
       </ul>
     </nav>
@@ -59,6 +59,38 @@
           </div>
         </section>
       </header>
+      <nav class="dropdown-settings">
+        <ul class="menu-options">
+          <li class="menu-elem edit-homescreen">Edit homescreen
+          </li>
+          <li class="menu-elem select-heading">Select 4 components:
+          </li>
+          <li class="menu-elem">
+            <img src="assets/selected-icon.svg">
+            <p>Temperature</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/selected-icon.svg">
+            <p>Rainfall</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/selected-icon.svg">
+            <p>Wind</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/selected-icon.svg">
+            <p>Cloud Cover</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/unselected-icon.svg">
+            <p>Humidity</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/unselected-icon.svg">
+            <p>Pressure</p>
+          </li>
+        </ul>
+      </nav>
       <div class="content">
         <div class="location-info">
           <h2 id="location"></h2>
@@ -75,7 +107,8 @@
           </div>
         </div>
       </div>
-      <div id="mask"></div>
+      <div id="menu-mask"></div>
+      <div id="settings-mask"></div>
     </main>
     <script src="scripts/menu.js"></script>
   </body>
