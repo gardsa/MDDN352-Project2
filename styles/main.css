@@ -11,6 +11,11 @@ body {
   background-color: #EDEDED;
 }
 
+a {
+  text-decoration: none;
+  color: #3ACCB0;
+}
+
 /* MENU */
 
 #menu .header-logo{
@@ -21,6 +26,7 @@ body {
   position: absolute;
   top: 50px;
   right: 0;
+  bottom: 0;
   left: 0;
 
   color: #7F507B;
@@ -44,16 +50,24 @@ body {
 }
 
 .user-location {
-  background-color: rgba(255, 255, 255, 0.5);
   margin-bottom: 1em;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .add-location {
   opacity: 0.75;
 }
 
+.attribution {
+  position: absolute;
+  bottom: 0;
+  padding: 1em;
+  font-size: 60%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 .slideout-menu {
-  position: fixed;
+  position: absolute;
   left: -252px;
   top: 0;
   bottom: 0;
