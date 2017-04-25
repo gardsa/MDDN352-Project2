@@ -19,19 +19,12 @@
 
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <!-- <link rel="stylesheet" type ="text/css" href="styles/addtohomescreen.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto" rel="stylesheet">
 
     <script src="scripts/weather.js"></script>
     <script src="scripts/modular.js"></script>
     <script src="scripts/packery.pkgd.min.js"></script>
     <script src="scripts/draggabilly.pkgd.min.js"></script>
-    <!-- <script src="scripts/addtohomescreen.min.js"></script>
-    <script>
-      window.onload = function() {
-        addToHomescreen();
-      }
-    </script> -->
   </head>
   <body>
     <nav class="slideout-menu">
@@ -39,7 +32,7 @@
         <img src="assets/header-icon.svg">
       </div>
       <ul class="menu-options">
-        <li class="menu-elem user-location">
+        <li id="user-location-link" class="menu-elem menu-elem-highlight">
           <img src="assets/user-location-icon.svg">
           <p>Your Location</p>
         </li>
@@ -47,7 +40,7 @@
           <img src="assets/add-location-icon.svg">
           <p>Add Location</p>
         </li>
-        <li class="menu-elem settings">
+        <li id="settings-link" class="menu-elem settings">
           <img src="assets/settings-menu-icon.svg">
           <p>Settings</p>
         </li>
@@ -119,9 +112,35 @@
           </div>
         </div>
       </div>
+      <div id="settings-nav">
+        <ul class="menu-options">
+          <li class="menu-elem menu-elem-highlight">
+            <h3>Settings</h2>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/notifications-icon.svg">
+            <p>Notifications</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/units-icon.svg">
+            <p>Unit Preferences</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/theme-icon.svg">
+            <p>Theme</p>
+          </li>
+          <li class="menu-elem">
+            <img src="assets/updates-icon.svg">
+            <p>Updates</p>
+          </li>
+        </ul>
+      </div>
+      <div id="settings-homescreen">
+
+      </div>
       <div id="menu-mask"></div>
       <div id="settings-mask"></div>
     </main>
-    <script src="scripts/menu.js"></script>
+    <script src="scripts/events.js"></script>
   </body>
 </html>

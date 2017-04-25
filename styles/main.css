@@ -24,7 +24,7 @@ a {
 
 .menu-options {
   position: absolute;
-  top: 50px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -32,6 +32,10 @@ a {
   color: #7F507B;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.slideout-menu .menu-options {
+  top: 50px;
 }
 
 .menu-elem {
@@ -49,7 +53,7 @@ a {
   vertical-align: middle;
 }
 
-.user-location {
+.menu-elem-highlight {
   margin-bottom: 1em;
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -184,6 +188,7 @@ header, .header-container {
 }
 
 .list-nav-elem-right {
+  display: block;
   float: right;
 }
 
@@ -226,10 +231,6 @@ header, .header-container {
   transform: translateY(0);
 }
 
-.dropdown-settings .menu-options {
-  top: 0;
-}
-
 .edit-homescreen {
   padding: .875em 1em;
   background-color: rgba(255, 255, 255, 0.5);
@@ -244,6 +245,7 @@ header, .header-container {
 /* MAIN CONTENT */
 
 .content {
+  display: block;
   position: absolute;
   top: 50px;
   right: 0;
@@ -407,4 +409,32 @@ sup {
 #cloud-canvas {
   width: 78%;
   height: 78%;
+}
+
+#settings-nav {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+}
+
+.settings-open #settings-nav {
+  display: block;
+}
+
+.settings-open .content, .settings-open .list-nav-elem-right {
+  display: none;
+}
+
+#settings-nav h3 {
+  /*padding: .1875em 0;*/
+  font-size: 1.25em;
+}
+
+#settings-nav .menu-elem {
+  padding: 0.75em 1em;
+
 }
