@@ -254,7 +254,7 @@ header, .header-container {
   background-color: inherit;
 }
 
-#menu-mask, #settings-mask {
+#menu-mask, #settings-mask, #location-error-mask {
   display: none;
   position: absolute;
   top: 50px;
@@ -271,6 +271,42 @@ header, .header-container {
 
 .dropdown-open #settings-mask {
   display: block;
+}
+
+.location-error #location-error-mask {
+  display: block;
+  top: 0;
+}
+
+.mask-content {
+  margin: 0 auto;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 300px;
+
+  background: #EDEDED;
+  border-radius: 5px;
+
+  text-align: center;
+}
+
+.mask-content p {
+  margin-bottom: 1.5em;
+  color: #1E1E1E;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+#close-location-error-mask {
+  padding: .3175em .5em;
+  border-radius: 5px;
+  background-color: #1E1E1E;
+  color: #FFFFFF;
 }
 
 .location-info {
@@ -303,7 +339,7 @@ header, .header-container {
 .grid {
   width: calc(90%);
   padding: 5%;
-  border-radius: 5px;
+  margin: 0 auto;
 }
 .grid:after {
   content: '';

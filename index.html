@@ -116,7 +116,7 @@
         <ul class="menu-options">
           <li class="menu-elem menu-elem-highlight">
             <h3>Settings</h2>
-          </li>
+          </li>å
           <li class="menu-elem">
             <img src="assets/notifications-icon.svg">
             <p>Notifications</p>
@@ -141,6 +141,12 @@
       <div id="menu-mask"></div>
       <div id="settings-mask"></div>
     </main>
+    <div id="location-error-mask">
+      <div class="mask-content">
+        <p>Location not found. Please check you have GPS services turned on, and allow Foresee to access your location. You may need to refresh the page.</p>
+        <btn id="close-location-error-mask">Close</btn>
+      </div>
+    </div>
     <script src="scripts/events.js"></script>
   </body>
 </html>

@@ -28,4 +28,8 @@
     toggleMenuClass();
   }
   d.getElementById('user-location-link').addEventListener('click', resetHomescreen);
+
+  d.getElementById('close-location-error-mask').addEventListener('click', function(){
+    d.body.classList.remove('location-error');
+  });
 })(document);

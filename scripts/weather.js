@@ -9,15 +9,20 @@
 
   function getUserLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(locationFound);
+      navigator.geolocation.getCurrentPosition(locationFound, locationError);
     } else {
       alert('Geolocation is not supported by this browser.');
     }
   }
 
-  function locationFound(position){
+  function locationFound(position) {
     getWeatherData(position.coords.latitude, position.coords.longitude);
     // getWeatherData(33.9391, 67.7100);
+  }
+
+  function locationError(event) {
+    console.log(event);
+    d.body.classList.add('location-error');
   }
 
   function getWeatherData(lat, lng) {
