@@ -21,7 +21,6 @@
   }
 
   function locationError(event) {
-    console.log(event);
     d.body.classList.add('location-error');
   }
 
@@ -30,7 +29,7 @@
     xhr.open('GET', corsHeadersURL + darkSkyBaseURL + darkSkyAPIKey + '/' + lat + ',' + lng + '?units=si&exclude=minutely,alerts,flags');
     xhr.addEventListener('load', function(event) {
       weatherData = JSON.parse(event.target.response);
-      console.log(weatherData);
+      // console.log(weatherData);
       renderWeatherInfo();
     });
     xhr.send();
